@@ -23,3 +23,54 @@
 .nav a:hover {
   border-bottom: 2px solid red;
 }
+
+.content {
+  background-image: url(/src/assets/school.jpg);
+  background-repeat: no-repeat;
+  background-position: center;
+  color: whitesmoke;
+  height: 85vh;
+  display: flex;
+  margin: 1% 10%;
+}
+
+.about {
+  margin-left: 1rem;
+  height: 80vh;
+  text-align: center;
+  width: 20vw;
+}
+
+.mission {
+  width: 40vw;
+  height: 80vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.inner {
+  margin-bottom: 3rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  width: 20vw;
+}
+
+button {
+  padding: 5px;
+  border-radius: 5px;
+  width: 100%;
+  background-color: black;
+  color: whitesmoke;
+  text-decoration: none;
+}
+
+.footer {
+  display: flex;
+  justify-content: center;
+}
+
+.footer p {
+  font-size: 0.8rem;
+}
