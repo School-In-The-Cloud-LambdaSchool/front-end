@@ -1,0 +1,25 @@
+.header {
+  display: flex;
+  width: 100%;
+  height: auto;
+  padding-top: 1rem;
+  justify-content: space-between;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin-right: 4rem;
+}
+
+.nav a {
+  margin-right: 2rem;
+  text-decoration: none;
+  color: black;
+  font-size: 1.2rem;
+}
+
+.nav a:hover {
+  border-bottom: 2px solid red;
+}
