@@ -62,6 +62,9 @@ const Register = (props) => {
     const [user, setUser] = useState(initialState);
     const [disabled, setDisabled] = useState(true);
     const [formErrors, setFormErrors] = useState(initialFormErrors)
+    const [registered, setRegistered] = useState(false)
+    
+    const { push } = useHistory()
 
     // form validation; disabled button
     useEffect(() => {
@@ -115,11 +118,14 @@ const Register = (props) => {
         if(user.role === 'admin'){
             newUser.adminCode = user.adminCode.trim()
         }
-
-        axios.post(`api/auth/register-${user.role}`)
+        
+        axios.post(`api/auth/register-${user.role}`, newUser)
           .then(res => {
             console.log(res)
-
+            setTimeout(() => {
+              setRegistered(true)
+            }, 3000);
+            push('/login')
           })
           .catch(err => {
             console.log(err)
@@ -140,8 +146,8 @@ const Register = (props) => {
 
             {/* Student and Volunteer */}
             {
-                (user.role === '' || user.role === 'student' || user.role === 'volunteer') &&
-                <fieldset>
+                (user.role === 'student' || user.role === 'volunteer') &&
+                <div>
                 <label>First Name
                     <input 
                         type ="text" 
@@ -158,13 +164,13 @@ const Register = (props) => {
                         value={user.lastName}
                     />
                 </label>
-                </fieldset>
+                </div>
             }   
 
             {/* Volunteer, Student and Admin */}
             {
                 user.role && 
-                <fieldset>
+                <div>
                 <label>Username
                     <input 
                         type ="text" 
@@ -181,7 +187,7 @@ const Register = (props) => {
                         value={user.password}
                     />
                 </label>
-                </fieldset>
+                </div>
             }
 
             
@@ -209,6 +215,13 @@ const Register = (props) => {
             </div>
 
             <button disabled={disabled}>Register!</button>
+
+            {
+              registered &&
+              <div>
+                <p>Successfully Registered as a {user.role}! Redirecting to login...</p>
+              </div>
+            }
 
           </form>
         </div>
