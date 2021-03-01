@@ -134,9 +134,9 @@ const Register = (props) => {
     }
 
     return (
-        <div>
+        <div className="registration-form">
           <form onSubmit={onSubmit}>
-            <select name="role" onChange={onChange} value={user.role}>
+            <select name="role" onChange={onChange} value={user.role} className="form-group">
                 <option value="">---What is your Role?---</option>
                 <option value="student">Student</option>
                 <option value="volunteer">Volunteer</option>
@@ -147,7 +147,7 @@ const Register = (props) => {
             {/* Student and Volunteer */}
             {
                 (user.role === 'student' || user.role === 'volunteer') &&
-                <div>
+                <div className="form-group">
                 <label>First Name
                     <input 
                         type ="text" 
@@ -170,7 +170,7 @@ const Register = (props) => {
             {/* Volunteer, Student and Admin */}
             {
                 user.role && 
-                <div>
+                <div className="form-group">
                 <label>Username
                     <input 
                         type ="text" 
@@ -195,14 +195,16 @@ const Register = (props) => {
             {/* Admin only */}
             {
                 user.role === 'admin' &&
-                <label>Admin Code
-                    <input 
-                        type ="text" 
-                        name="adminCode"
-                        onChange={onChange}
-                        value={user.adminCode}
-                    />
-                </label>
+                <div className="form-group">
+                    <label>Admin Code
+                        <input 
+                            type ="password" 
+                            name="adminCode"
+                            onChange={onChange}
+                            value={user.adminCode}
+                        />
+                    </label>
+                </div>
             }
 
             <div className='errors'>
@@ -214,7 +216,7 @@ const Register = (props) => {
               <div>{user.role === 'student' || user.role === 'volunteer' ? '' : formErrors.adminCode}</div>
             </div>
 
-            <button disabled={disabled}>Register!</button>
+            <button className="register-user-btn" disabled={disabled}>Register!</button>
 
             {
               registered &&
