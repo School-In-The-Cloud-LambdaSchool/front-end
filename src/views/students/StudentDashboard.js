@@ -1,7 +1,7 @@
 import React from "react";
 
-function StudentDashboard() {
-	return;
-}
+const StudentDashboard = () => {
+	return <div></div>;
+};
 
 export default StudentDashboard;
