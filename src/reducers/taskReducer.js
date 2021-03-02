@@ -1,7 +1,17 @@
+import {
+    FETCH_TASK_START,
+    FETCH_TASK_SUCCESS,
+    FETCH_TASK_FAIL,
+    POST_TASK_START,
+    POST_TASK_SUCCESS,
+    POST_TASK_FAIL
+} from '../actions/formActions';
+
 
 const initialState = {
     tasks: [{
-        taskId: null,
+        studentId: null,
+        taskPairId: null,
         task: '',
         completed: false
     }],
@@ -12,29 +22,29 @@ const initialState = {
 
 const taskReducer = (state = initialState, action) =>{
     switch(action.type) {
-        case 'FETCH_TASK_START':
+        case FETCH_TASK_START:
             return {
                 ...state,
                 isFetching: true
             }
-        case 'FETCH_TASK_SUCCESS':
+        case FETCH_TASK_SUCCESS:
             return {
                 ...state,
                 isFetching: false,
                 tasks: action.payload
             }
-        case 'FETCH_TASK_FAIL':
+        case FETCH_TASK_FAIL:
             return {
                 ...state,
                 isFetching: false,
                 error: action.payload
             }
-        case 'POST_TASK_START':
+        case POST_TASK_START:
             return {
                 ...state,
                 isPosting: true
             }
-        case 'POST_TASK_SUCCESS':
+        case POST_TASK_SUCCESS:
             return {
                 ...state,
                 isPosting: false,
@@ -43,7 +53,7 @@ const taskReducer = (state = initialState, action) =>{
                     action.payload
                 ]
             }
-        case 'POST_TASK_FAIL':
+        case POST_TASK_FAIL:
             return {
                 ...state,
                 isPosting: false,
