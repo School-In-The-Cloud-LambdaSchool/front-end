@@ -90,7 +90,18 @@ class Login extends Component {
 				console.log(err);
 			});
 
+
 		// this.setState(initialForm);
+
+			if (this.state.role === "admin") {
+
+			} else if ( this.state.role === "volunteer") {
+
+			} else { //student path
+
+			}
+
+
 	};
 	render() {
 		const {
