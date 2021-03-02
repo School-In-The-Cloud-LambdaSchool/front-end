@@ -7,8 +7,6 @@ import {
     POST_FORM_FAIL
 } from '../actions/formActions';
 
-
-
 const initialState = {
     userData: {
         token: '',
