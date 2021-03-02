@@ -115,23 +115,24 @@ class Login extends Component {
 		} = this.state;
 		return (
 			<div>
-				<div>
+				<div className="login">
 					<div>
 						<h1> Welcome to the School in the Cloud</h1>
 
-						<span>Login to Your Account</span>
+						<h3>Login to Your Account</h3>
 					</div>
 					<div>
-						<img
-							alt=""
+						<img 
+							className="login-image"
+							alt="Student in library stacks."
 							src="https://images.unsplash.com/photo-1427504494785-3a9ca7044f45?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2250&q=80"
 							width="1000x"
 						/>
 						<h1>{loginMessage}</h1>
 					</div>
-					<form onSubmit={this.handleSubmit}>
-						<div>
-							<label>Username: </label>
+					<form onSubmit={this.handleSubmit} className="login-form">
+						<div className="form-group">
+							<label>Username: 
 							<input
 								name="username"
 								type="text"
@@ -139,9 +140,8 @@ class Login extends Component {
 								onChange={this.handleChange}
 							/>
 							<div>{usernameError}</div>
-						</div>
-						<div>
-							<label>Password: </label>
+							</label>
+							<label>Password: 
 							<input
 								name="password"
 								type="password"
@@ -149,9 +149,10 @@ class Login extends Component {
 								onChange={this.handleChange}
 							/>
 							<div>{passwordError}</div>
+							</label>
 						</div>
-						<div>
-							<label>Choose Role: </label>
+						<div className="form-group">
+							<label>Choose Role: 
 							<select name="role" value={role} onChange={this.handleChange}>
 								<option value="">--- Select Role---</option>
 								<option value="student">Student</option>
@@ -159,6 +160,7 @@ class Login extends Component {
 								<option value="admin">Administaror</option>
 							</select>
 							<div>{roleError}</div>
+							</label>
 						</div>
 						<div className="button_Div">
 							<button>Submit</button>
