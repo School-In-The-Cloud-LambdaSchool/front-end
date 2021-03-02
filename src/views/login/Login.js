@@ -52,32 +52,33 @@ class Login extends Component {
 						/>
 					</div>
 					<form onSubmit={this.handleSubmit}>
-						<div>
-							<label>Username: </label>
+						<div className="form-group">
+							<label>Username: 
 							<input
 								name="username"
 								type="text"
 								value={username}
 								onChange={this.handleChange}
 							/>
-						</div>
-						<div>
-							<label>Password: </label>
+							</label>
+							<label>Password: 
 							<input
 								name="password"
 								type="text"
 								value={password}
 								onChange={this.handleChange}
 							/>
+							</label>
 						</div>
-						<div>
-							<label>Choose Role: </label>
+						<div className="form-group">
+							<label>Choose Role: 
 							<select name="role" value={role} onChange={this.handleChange}>
 								<option value="">--- Select Role---</option>
 								<option value="student">Student</option>
 								<option value="volunteer">Volunteer</option>
 								<option value="admin">Administaror</option>
 							</select>
+							</label>
 						</div>
 						<div className="button_Div">
 							<button>Login</button>
