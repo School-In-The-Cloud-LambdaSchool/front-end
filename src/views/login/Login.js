@@ -33,6 +33,15 @@ class Login extends Component {
 			.catch((err) => {
 				console.log(err);
 			});
+
+			if (this.state.role === "admin") {
+
+			} else if ( this.state.role === "volunteer") {
+
+			} else { //student path
+
+			}
+
 	};
 	render() {
 		const { username, password, role } = this.state;
