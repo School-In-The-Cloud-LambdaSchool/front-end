@@ -54,3 +54,21 @@ input, select {
   cursor: pointer;
   color: black;
 }
+
+.login {
+  margin: 0 2em;
+}
+
+.login-image {
+  width: 40vw;
+  box-shadow: 2px 2px 2px gray;
+  border-radius: 20px;
+  border: 4px solid #000;
+}
+
+.login-form {
+  position: relative;
+  top: -10em;
+  left: 10em;
+  background-color: white;
+}

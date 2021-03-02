@@ -38,20 +38,21 @@ class Login extends Component {
 		const { username, password, role } = this.state;
 		return (
 			<div>
-				<div>
+				<div className="login">
 					<div>
 						<h1> Welcome to the School in the Cloud</h1>
 
-						<span>Login to Your Account</span>
+						<h3>Login to Your Account</h3>
 					</div>
 					<div>
-						<img
-							alt=""
+						<img 
+							className="login-image"
+							alt="Student in library stacks."
 							src="https://images.unsplash.com/photo-1427504494785-3a9ca7044f45?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2250&q=80"
 							width="1000x"
 						/>
 					</div>
-					<form onSubmit={this.handleSubmit}>
+					<form onSubmit={this.handleSubmit} className="login-form">
 						<div className="form-group">
 							<label>Username: 
 							<input
