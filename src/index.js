@@ -8,17 +8,17 @@ import thunk from "redux-thunk";
 import "./index.css";
 import App from "./App";
 
-import { rootReducer } from './reducers/index';
+// import { rootReducer } from './reducers/index';
 
-const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(thunk)))
+// const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(thunk)))
 
 ReactDOM.render(
 	<React.StrictMode>
-		<Provider store={store}>
+		{/* <Provider store={store}> */}
 		<Router>
 			<App />
 		</Router>
-		</Provider>
+		{/* </Provider> */}
 	</React.StrictMode>,
 	document.getElementById("root")
 );
