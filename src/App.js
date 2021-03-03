@@ -30,8 +30,8 @@ function App() {
 
         <PrivateRoute path='/admin/create-task' component={AdminAddTask} />
         <PrivateRoute path='/admin/edit-task' component={AdminEditTask} />
-        <PrivateRoute path='/admin/students' component={AdminStudents} />
-        <PrivateRoute path='/admin/' component={AdminDashboard} />
+        <PrivateRoute path='/admin/:volunteerId/students' component={AdminStudents} />
+        <PrivateRoute path='/admin' component={AdminDashboard} />
         <PrivateRoute path='/volunteer/:volunteerId' component={VolunteerDashboard} />
         <PrivateRoute path='/student/:studentId' component={StudentDashboard} />
 

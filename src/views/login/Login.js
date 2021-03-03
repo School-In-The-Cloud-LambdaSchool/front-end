@@ -35,7 +35,7 @@ class Login extends Component {
 			});
 
 			if (this.state.role === "admin") {
-
+				
 			} else if ( this.state.role === "volunteer") {
 
 			} else { //student path

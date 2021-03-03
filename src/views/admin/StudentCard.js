@@ -24,6 +24,12 @@ export default function StudentCard({student}) {
     <div>
         <h3>{student.firstName} {student.lastName}</h3>
         <p>Student Id #{student.studentId}</p>
+        <div>
+          <h4>Tasks:</h4>
+          {tasks.map( task => {
+            <p>{task.task}</p>
+          })}
+        </div>
     </div>
   );
 }
