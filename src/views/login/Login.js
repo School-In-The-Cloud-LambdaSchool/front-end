@@ -156,7 +156,7 @@ class Login extends Component {
 								<option value="">--- Select Role---</option>
 								<option value="student">Student</option>
 								<option value="volunteer">Volunteer</option>
-								<option value="admin">Administaror</option>
+								<option value="admin">Administrator</option>
 							</select>
 							<div>{roleError}</div>
 						</div>
