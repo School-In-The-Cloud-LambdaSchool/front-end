@@ -123,13 +123,15 @@ const Register = (props) => {
         
         axios.post(`https://school-in-the-cloud-tt16.herokuapp.com/api/auth/register-${user.role}`, newUser)
           .then(res => {
+            console.log('registered')
             console.log(res)
+            setRegistered(true)
             setTimeout(() => {
-              setRegistered(true)
+              push('/login')
             }, 3000);
-            push('/login')
           })
           .catch(err => {
+            console.log('failed to register')
             console.log(err)
           })
 

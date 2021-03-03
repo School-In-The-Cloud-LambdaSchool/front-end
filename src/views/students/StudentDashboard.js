@@ -1,6 +1,8 @@
 import React from 'react'
 
 const StudentDashboard = () => {
+	// displays logged in students tasks on render
+	// option to change volunteer which loads a new component that loads all volunteers on cards. when you click the card it changes students volunteer to that one
 	return (
 		<div>
 			
