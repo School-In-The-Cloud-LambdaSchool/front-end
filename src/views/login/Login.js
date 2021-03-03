@@ -79,12 +79,12 @@ class Login extends Component {
 
 		axios
 			.post(
-				`https://school-in-the-cloud-tt16.herokuapp.com/api/auth/login-${this.state.role}`,
+				`https://school-in-the-cloud-tt16.herokuapp.com/api/auth/login`,
 				login_Info
 			)
 			.then((res) => {
-				console.log(res);
-				console.log(res.data);
+				console.log("Succes!:",res.data);
+				alert(res.data.message)
 			})
 			.catch((err) => {
 				console.log(err);
