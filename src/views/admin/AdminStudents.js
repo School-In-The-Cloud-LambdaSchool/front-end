@@ -5,12 +5,12 @@ import StudentCard from './StudentCard';
 
 const AdminStudents = () => {
   const { volunteerId } = useParams();
-  const { students, setStudents } = useState([]);
+  const [ students, setStudents ] = useState([]);
   const history = useHistory();
 
   useEffect(() => {
     axiosWithAuth()
-      .get(`https://school-in-the-cloud-tt16.herokuapp.com/api/volunteers/find-students/${volunteerId}`)
+      .get(`api/volunteers/find-students/${volunteerId}`)
       .then( res => {
           setStudents(res.data.data);
       })
@@ -20,7 +20,7 @@ const AdminStudents = () => {
   },[]);
 
   const handleGoBack = (evt) => {
-    evt.preventdefault();
+    evt.preventDefault();
     history.push("/admin");
   }
 
@@ -29,7 +29,7 @@ const AdminStudents = () => {
       <h2>Volunteer Id #{volunteerId}'s Students</h2>
       {students.map( student => {
         return (
-          <StudentCard student={student} />
+          <StudentCard key={student.studentId} student={student} />
         );
       })}
       <button onClick={handleGoBack} >Go Back To Volunteers</button>

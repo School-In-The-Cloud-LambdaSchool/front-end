@@ -4,9 +4,9 @@ import { useHistory } from 'react-router-dom';
 import axiosWithAuth from '../../utils/axiosWithAuth';
 
 export default function TaskPage() {
-  const { studentId } = useParams();
-  const { allTasks, setAllTasks } = useState([]);
-  const { formValues, setFormValues } = useState({ task: "" });
+  const { studentId, volunteerId } = useParams();
+  const [ allTasks, setAllTasks ] = useState([]);
+  const [ formValues, setFormValues ] = useState({ task: "" });
   const history = useHistory();
 
   useEffect(() => {
@@ -15,7 +15,7 @@ export default function TaskPage() {
 
   const handleAllTaskGet = () => {
     axiosWithAuth()
-      .get(`https://school-in-the-cloud-tt16.herokuapp.com/api/api/volunteers/tasks`)
+      .get(`api/volunteers/tasks`)
       .then( res => {
         setAllTasks(res.data.data);
       })
@@ -24,20 +24,9 @@ export default function TaskPage() {
       });
   }
 
-  const handleAddTask = (taskId, studentId) => {
-    axiosWithAuth()
-      .post(`https://school-in-the-cloud-tt16.herokuapp.com/api/api/volunteers/add-task-pair`, {taskId: taskId, studentId: studentId} )
-      .then( res => {
-        history.push("/admin");
-      })
-      .catch( err => { 
-        console.log("Admin set task pair:", err.errMessage, err.message); 
-      });
-  }
-
   const handleCancel = (evt) => {
     evt.preventDefault();
-    history.push("/admin");
+    history.push(`/admin/${volunteerId}/students`);
   }
 
   const handleChange = (evt) => {
@@ -47,7 +36,7 @@ export default function TaskPage() {
   const handleSubmit = (evt) => {
     evt.preventDefault();
     axiosWithAuth()
-      .post(`https://school-in-the-cloud-tt16.herokuapp.com/api/admin/create-task`, formValues )
+      .post(`api/admin/create-task`, formValues )
       .then( res => {
         handleAllTaskGet();
       })
@@ -62,7 +51,16 @@ export default function TaskPage() {
       <h2>Click A Task To Add To Students List</h2>
       {allTasks.map( task => {
         return (
-          <div onClick={handleAddTask(task.taskId, studentId)} >
+          <div onClick={ () => {
+            axiosWithAuth()
+            .post(`api/volunteers/add-task-pair`, {taskId: task.taskId, studentId: studentId} )
+            .then( res => {
+              history.push(`/admin/${volunteerId}/students`);
+            })
+            .catch( err => { 
+              console.log("Admin set task pair:", err.errMessage, err.message); 
+            })
+          }} >
             <h3>{task.task}</h3>
           </div>
         );
