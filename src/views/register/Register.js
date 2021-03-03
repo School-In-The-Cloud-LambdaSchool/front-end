@@ -68,11 +68,13 @@ const Register = (props) => {
 
     // form validation; disabled button
     useEffect(() => {
+      let isMounted = true;
       let formSchema = user.role === 'admin'
         ? formSchemaAdmin
         : formSchemaSV
     
       formSchema.isValid(user).then(valid => setDisabled(!valid))
+      return () => isMounted = false;
     }, [user])
 
     
@@ -104,6 +106,7 @@ const Register = (props) => {
 
     const onSubmit = evt => {
         evt.preventDefault()
+        
         const newUser = {
             username: user.username.trim(),
             password: user.password.trim(),
@@ -118,7 +121,7 @@ const Register = (props) => {
             newUser.adminCode = user.adminCode.trim()
         }
         
-        axios.post(`api/auth/register-${user.role}`, newUser)
+        axios.post(`https://school-in-the-cloud-tt16.herokuapp.com/api/auth/register-${user.role}`, newUser)
           .then(res => {
             console.log('registered')
             console.log(res)
