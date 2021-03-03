@@ -1,10 +1,8 @@
 import React, {useState, useEffect} from 'react';
-import {useParams} from 'react-router-dom';
 import axiosWithAuth from '../../utils/axiosWithAuth';
-import AdminAddTask from './AdminAddTask';
 import VolunteerCard from './VolunteerCard';
 
-const AdminDashboard = (props) => {
+const AdminDashboard = () => {
     const { volunteers, setVolunteers } = useState([]);
     const { refresh, setRefresh } = useState(false);
 
