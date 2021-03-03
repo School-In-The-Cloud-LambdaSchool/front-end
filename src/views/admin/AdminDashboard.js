@@ -19,7 +19,9 @@ const AdminDashboard = () => {
         axiosWithAuth()
         .get(`https://school-in-the-cloud-tt16.herokuapp.com/api/students/volunteers`)
         .then( res => {
+            console.log(res.data)
             setVolunteers(res.data.data);
+            console.log(volunteers)
         })
         .catch( err => { console.log("Admin get volunteers:", err.errMessage, err.message); })
     }
