@@ -104,7 +104,6 @@ const Register = (props) => {
 
     const onSubmit = evt => {
         evt.preventDefault()
-        console.log('registered')
         const newUser = {
             username: user.username.trim(),
             password: user.password.trim(),
@@ -121,13 +120,15 @@ const Register = (props) => {
         
         axios.post(`api/auth/register-${user.role}`, newUser)
           .then(res => {
+            console.log('registered')
             console.log(res)
+            setRegistered(true)
             setTimeout(() => {
-              setRegistered(true)
+              push('/login')
             }, 3000);
-            push('/login')
           })
           .catch(err => {
+            console.log('failed to register')
             console.log(err)
           })
 
