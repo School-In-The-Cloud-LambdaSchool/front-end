@@ -5,7 +5,8 @@ import StudentCard from './StudentCard';
 
 const AdminStudents = () => {
   const { volunteerId } = useParams();
-  const { students, setStudents } = useState();
+  const { students, setStudents } = useState([]);
+  const history = useHistory();
 
   useEffect(() => {
     axiosWithAuth()
@@ -18,6 +19,11 @@ const AdminStudents = () => {
       });
   },[]);
 
+  const handleGoBack = (evt) => {
+    evt.preventdefault();
+    history.push("/admin");
+  }
+
   return (
     <div>
       <h2>Volunteer Id #{volunteerId}'s Students</h2>
@@ -26,6 +32,7 @@ const AdminStudents = () => {
           <StudentCard student={student} />
         );
       })}
+      <button onClick={handleGoBack} >Go Back To Volunteers</button>
     </div>
   )
 }

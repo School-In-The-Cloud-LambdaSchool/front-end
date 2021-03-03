@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 
-export default function VolunteerCard({user}) {
+export default function VolunteerCard({user, setRefresh}) {
   const history = useHistory();
 
   const handleStudentGet = (volunteerId) => {
+    setRefresh(true);
     history.push(`/admin/${volunteerId}/students`);
   }
 
