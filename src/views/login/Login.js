@@ -83,25 +83,19 @@ class Login extends Component {
 				login_Info
 			)
 			.then((res) => {
-				console.log("Succes!:",res.data);
-				alert(res.data.message)
+				console.log(res);
+				console.log(res.data);
+				if (this.state.role === "admin") {
+					window.location = "/admin"
+				} else if ( this.state.role === "volunteer") {
+					window.location = `/volunteer/${res.data.volunteerId}`
+				} else { //student path
+					window.location = `/student/${res.data.studentId}`
+				}
 			})
 			.catch((err) => {
 				console.log(err);
 			});
-
-
-		// this.setState(initialForm);
-
-			if (this.state.role === "admin") {
-				
-			} else if ( this.state.role === "volunteer") {
-
-			} else { //student path
-
-			}
-
-
 	};
 	render() {
 		const {
