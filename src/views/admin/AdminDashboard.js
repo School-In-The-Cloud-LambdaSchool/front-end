@@ -1,15 +1,19 @@
 import React, {useState, useEffect} from 'react';
-import {useParams} from 'react-router-dom';
 import axiosWithAuth from '../../utils/axiosWithAuth';
-import AdminAddTask from './AdminAddTask';
 import VolunteerCard from './VolunteerCard';
 
-const AdminDashboard = (props) => {
-    const { volunteers, setVolunteers } = useState();
+const AdminDashboard = () => {
+    const { volunteers, setVolunteers } = useState([]);
+    const { refresh, setRefresh } = useState(false);
 
     useEffect( () => {
         fetchUsers();
     },[]);
+
+    if ( refresh === true ) {
+        fetchUsers();
+        setRefresh(false);
+    }
 
     const fetchUsers = () => {
         axiosWithAuth()
@@ -23,14 +27,10 @@ const AdminDashboard = (props) => {
     return (
         <div>
             <h2>Volunteers</h2>
+            <h3>Click on a volunteer to see their students</h3>
             {volunteers.map( user => {
-                return (
-                    <VolunteerCard user={user} />
-                )
+                return <VolunteerCard user={user} setRefresh={setRefresh} />;
             })}
-            <AdminAddTask />
-            
-
         </div>
     )
 }

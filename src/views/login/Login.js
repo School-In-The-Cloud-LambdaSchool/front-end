@@ -94,7 +94,7 @@ class Login extends Component {
 		// this.setState(initialForm);
 
 			if (this.state.role === "admin") {
-
+				
 			} else if ( this.state.role === "volunteer") {
 
 			} else { //student path
