@@ -83,14 +83,17 @@ class Login extends Component {
 				login_Info
 			)
 			.then((res) => {
+				window.localStorage.setItem("token", res.data.token)
 				console.log(res);
 				console.log(res.data);
-				if (this.state.role === "admin") {
-					window.location = "/admin"
-				} else if ( this.state.role === "volunteer") {
-					window.location = `/volunteer/${res.data.volunteerId}`
-				} else { //student path
-					window.location = `/student/${res.data.studentId}`
+				if ( res.data.role === "admin") {
+					window.location.href = "/admin"
+				} else if (  res.data.role === "volunteer") {
+					window.location.href = `/volunteer/${res.data.volunteerId}`
+				} else if (  res.data.role === "student") { //student path
+					window.location.href = `/student/${res.data.studentId}`
+				} else {
+					console.log("login role",  res.data.role)
 				}
 			})
 			.catch((err) => {

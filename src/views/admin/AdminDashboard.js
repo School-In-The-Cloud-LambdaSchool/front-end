@@ -3,25 +3,17 @@ import axiosWithAuth from '../../utils/axiosWithAuth';
 import VolunteerCard from './VolunteerCard';
 
 const AdminDashboard = () => {
-    const { volunteers, setVolunteers } = useState([]);
-    const { refresh, setRefresh } = useState(false);
+    const [ volunteers, setVolunteers ] = useState([]);
 
     useEffect( () => {
         fetchUsers();
     },[]);
 
-    if ( refresh === true ) {
-        fetchUsers();
-        setRefresh(false);
-    }
-
     const fetchUsers = () => {
         axiosWithAuth()
-        .get(`https://school-in-the-cloud-tt16.herokuapp.com/api/students/volunteers`)
+        .get(`api/students/volunteers`)
         .then( res => {
-            console.log(res.data)
             setVolunteers(res.data.data);
-            console.log(volunteers)
         })
         .catch( err => { console.log("Admin get volunteers:", err.errMessage, err.message); })
     }
@@ -30,9 +22,14 @@ const AdminDashboard = () => {
         <div>
             <h2>Volunteers</h2>
             <h3>Click on a volunteer to see their students</h3>
-            {volunteers.map( user => {
-                return <VolunteerCard user={user} setRefresh={setRefresh} />;
-            })}
+            { volunteers ? 
+            volunteers.map( user => {
+                return <VolunteerCard user={user} key={user.volunteerId} setVolunteers={setVolunteers}/>;
+            })
+            :   <div>
+                    <h2>Waiting for volunteers...</h2>
+                </div>
+            }
         </div>
     )
 }
