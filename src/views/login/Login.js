@@ -160,7 +160,7 @@ class Login extends Component {
 							</label>
 						</div>
 						<div className="button_Div">
-							<button>Submit</button>
+							<button>Log In</button>
 							<h2>Or Get Started Today</h2>
 							<a href="/register">Register</a>
 						</div>

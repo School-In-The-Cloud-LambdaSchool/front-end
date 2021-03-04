@@ -32,11 +32,11 @@ const VolunteerDashboard = () => {
   }, [])
 
   return (
-    <div>
+    <div className="container">
       <h2>Volunteer Id #{volunteerId}'s Students</h2>
       { students.length > 0 ? students.map(student => {
         return(
-          <div>
+          <div className="container">
             <h3>{student.firstName} {student.lastName}</h3>
             <p>Student Id #{student.studentId}</p>
             <div>

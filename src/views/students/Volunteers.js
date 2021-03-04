@@ -23,7 +23,7 @@ const Volunteers = () => {
     }
 
     return (
-         <div>
+         <div className="container">
              <h2>Available Volunteers</h2>
              <h3>Select your Volunteer</h3>
              {volunteers ?
