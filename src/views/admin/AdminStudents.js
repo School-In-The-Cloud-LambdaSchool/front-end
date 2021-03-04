@@ -17,7 +17,7 @@ const AdminStudents = () => {
       .catch( err => { 
         console.log("Admin get Students:", err.errMessage, err.message); 
       });
-  },[]);
+  },[volunteerId]);
 
   const handleGoBack = (evt) => {
     evt.preventDefault();

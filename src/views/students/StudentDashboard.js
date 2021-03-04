@@ -15,7 +15,7 @@ const StudentDashboard = () => {
 	useEffect(() => {
 		handleTaskGet(studentId);
 		handleStudentGet(studentId);
-	},[])
+	},[studentId])
 
 	const handleTaskGet = (studentId) => {
 		axiosWithAuth()

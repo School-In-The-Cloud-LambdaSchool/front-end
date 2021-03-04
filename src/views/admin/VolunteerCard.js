@@ -1,29 +1,19 @@
 import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import axiosWithAuth from '../../utils/axiosWithAuth';
+import TaskCard from './TaskCard';
 
-export default function VolunteerCard({user, setVolunteers, volunteers}) {
+export default function VolunteerCard({user}) {
   const history = useHistory();
   const [ tasks, setTasks ]  = useState([]);
 
   useEffect(() => {
     handleTaskGet(user.volunteerId);
-  }, []);
+  }, [user.volunteerId]);
 
   const handleStudentGet = (evt) => {
     evt.preventDefault()
-    fetchUsers();
     history.push(`/admin/${user.volunteerId}/students`);
-  }
-
-  const fetchUsers = () => {
-    axiosWithAuth()
-    .get(`api/students/volunteers`)
-    .then( res => {
-      // console.log(res.data.data)
-      setVolunteers(res.data.data);
-    })
-    .catch( err => { console.log("Admin get volunteers:", err.errMessage, err.message); })
   }
 
   const handleTaskGet = (volunteerId) => {
@@ -51,20 +41,7 @@ export default function VolunteerCard({user, setVolunteers, volunteers}) {
           <h4>Tasks:</h4>
           { tasks.length > 0 ? tasks.map( task => {
             return (
-              <div className="container task"> 
-                <p>{task.task}</p>
-                <button onClick={ (evt) => {
-                  evt.preventDefault()
-                  axiosWithAuth()
-                    .delete(`api/volunteers/task-pairs/${task.taskPairId}`)
-                    .then( res => {
-                      handleTaskGet(user.volunteerId);
-                    })
-                    .catch( err => { 
-                      console.log("Admin delete Task:", err.errMessage, err.message); 
-                    });
-                }} >Delete Task</button>
-              </div>
+             <TaskCard key={task.taskPairId} user={user} task={task} handleTaskGet={handleTaskGet} />
             );
           })
           : <p>No Tasks Assigned Yet</p>

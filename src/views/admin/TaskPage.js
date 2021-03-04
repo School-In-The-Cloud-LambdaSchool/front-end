@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from "react-router-dom";
 import { useHistory } from 'react-router-dom';
 import axiosWithAuth from '../../utils/axiosWithAuth';
+import AllTasks from './AllTasks';
 
 export default function TaskPage() {
   const { volunteerId } = useParams();
@@ -51,19 +52,7 @@ export default function TaskPage() {
       <h2>Click A Task To Add To Volunteers List</h2>
       {allTasks.map( task => {
         return (
-          <div onClick={ () => {
-            console.log("taskId:", task.taskId, "volunteerId:", volunteerId)
-            axiosWithAuth()
-            .post(`api/volunteers/add-task-pair`, {taskId: task.taskId, volunteerId: volunteerId} )
-            .then( res => {
-              history.push(`/admin`);
-            })
-            .catch( err => { 
-              console.log("Admin set task pair:", err.errMessage, err.message); 
-            })
-          }} >
-            <h3>{task.task}</h3>
-          </div>
+          <AllTasks key={task.taskId} task={task} />
         );
       })}
       <button onClick={handleCancel} >Cancel</button>
