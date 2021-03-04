@@ -30,19 +30,10 @@ const StudentDashboard = () => {
 	return (
 		<div>
 			<h2>Welcome, {student.firstName}</h2>
-			<h3>Current Volunteer: </h3>
+			<h3>Current Volunteer: {}</h3>
 			<button onClick={(event)=>{
 				event.preventDefault();
 				push(`/student/update-volunteer/${studentId}`)
-				// axiosWithAuth()
-				// .put(`api/students/${studentId}`, {needMeeting: false, volunteerId: volunteers.volunteerId})
-				// .then(res => {
-				// 	console.log(res)
-				// 	push(`/student/update-volunteer/${studentId}`)
-				// })
-				// .catch(err  => {
-				// 	console.log("Student change Volunteer: ", err.errMessage, err.message); 
-				// })
 			}}>Change Volunteer</button>
 			<h3>Your Tasks:</h3>
 			{tasks.map(task => {
