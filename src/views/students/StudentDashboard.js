@@ -1,10 +1,13 @@
 import React, {useState, useEffect} from 'react'
+import { useParams } from 'react-router-dom';
 import axiosWithAuth from '../../utils/axiosWithAuth';
+import Volunteers from './Volunteers';
 
 // GET & PUT REQUEST
 // displays logged in students tasks on render
 // option to change volunteer which loads a new component that loads all volunteers on cards. when you click the card it changes students volunteer to that one
 const StudentDashboard = () => {
+	const {studentId} = useParams();
 	const [student, setStudent] = useState({});
 	const [volunteers, setVolunteers] = useState([]);
 	const [tasks, setTasks] = useState([]);
@@ -26,7 +29,7 @@ const StudentDashboard = () => {
 
 	const handleVolunteerChange = () => {
 		axiosWithAuth()
-		.put(``)
+		.put(`api/students/${studentId}`)
 		.then(res => {
 			console.log(res)
 		})
@@ -39,7 +42,7 @@ const StudentDashboard = () => {
 		<div>
 			<h2>Welcome, {student.firstName}</h2>
 			<h3>Current Volunteer:</h3>
-			<button>Change Volunteer</button>
+			<button onClick={()=> <Volunteers volunteers={volunteers} setVolunteers={setVolunteers}/>}>Change Volunteer</button>
 			<h3>Your Tasks:</h3>
 			{tasks.map(task => {
 				return(
