@@ -1,14 +1,15 @@
 import React from 'react';
-import { useHistory } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
 import axiosWithAuth from '../../utils/axiosWithAuth';
 
 const VolunteerCard = ({user, setVolunteers}) => {
+    const {studentId} = useParams();
     const history = useHistory();
 
     const handleStudentGet = (evt) => {
       evt.preventDefault()
       fetchUsers();
-      history.push(`/admin/${user.volunteerId}/students`);
+      history.push(`/student/${studentId}`);
     }
   
     const fetchUsers = () => {
@@ -23,10 +24,10 @@ const VolunteerCard = ({user, setVolunteers}) => {
   
     return(
       <div>
-        <div onClick={handleStudentGet} >
+        <div>
           <h3>{user.firstName} {user.lastName}</h3>
           <p>Volunteer Id #{user.volunteerId}</p>      
-          <button>Select Volunteer</button>    
+          <button onClick={handleStudentGet}>Select Volunteer</button>    
         </div>
       </div>
     );
