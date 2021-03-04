@@ -141,10 +141,10 @@ const Register = (props) => {
         <div className="registration-form">
           <form onSubmit={onSubmit}>
             <select name="role" onChange={onChange} value={user.role} className="form-group">
-                <option value="">---What is your Role?---</option>
+                <option value=""> --- What is your Role? --- </option>
                 <option value="student">Student</option>
                 <option value="volunteer">Volunteer</option>
-                <option value="admin">Admin</option>
+                <option value="admin">Administrator</option>
             </select>
         
 
