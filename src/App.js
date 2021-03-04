@@ -12,6 +12,7 @@ import VolunteerDashboard from './views/volunteers/VolunteerDashboard';
 import StudentDashboard from './views/students/StudentDashboard';
 import AdminStudents from './views/admin/AdminStudents';
 import TaskPage from './views/admin/TaskPage';
+import Volunteers from './views/students/Volunteers';
 
 function App() {
   return (
@@ -31,6 +32,7 @@ function App() {
         <PrivateRoute exact path='/admin/add-task/:studentId/:volunteerId' component={TaskPage} />
         <PrivateRoute exact path='/admin' component={AdminDashboard} />
         <PrivateRoute exact path='/volunteer/:volunteerId' component={VolunteerDashboard} />
+        <PrivateRoute exact path='/student/update-volunteer/:studentId' component={Volunteers} />
         <PrivateRoute exact path='/student/:studentId' component={StudentDashboard} />
 
         <Route exact path='/'>
