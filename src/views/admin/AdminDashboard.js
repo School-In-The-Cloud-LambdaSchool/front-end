@@ -24,7 +24,7 @@ const AdminDashboard = () => {
             <h3>Click on a volunteer to see their students</h3>
             { volunteers ? 
             volunteers.map( user => {
-                return <VolunteerCard user={user} key={user.volunteerId} setVolunteers={setVolunteers}/>;
+                return <VolunteerCard user={user} key={user.volunteerId} setVolunteers={setVolunteers} volunteers={volunteers} />;
             })
             :   <div>
                     <h2>Waiting for volunteers...</h2>

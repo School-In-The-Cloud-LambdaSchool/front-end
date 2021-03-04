@@ -4,7 +4,7 @@ import { useHistory } from 'react-router-dom';
 import axiosWithAuth from '../../utils/axiosWithAuth';
 
 export default function TaskPage() {
-  const { studentId, volunteerId } = useParams();
+  const { volunteerId } = useParams();
   const [ allTasks, setAllTasks ] = useState([]);
   const [ formValues, setFormValues ] = useState({ task: "" });
   const history = useHistory();
@@ -20,7 +20,7 @@ export default function TaskPage() {
         setAllTasks(res.data.data);
       })
       .catch( err => { 
-        console.log("Admin get all Tasks:", err.errMessage, err.message); 
+        console.log("Admin get all Tasks:", err.message.errMessage, err.message); 
       });
   }
 
@@ -48,14 +48,15 @@ export default function TaskPage() {
 
   return(
     <div>
-      <h2>Click A Task To Add To Students List</h2>
+      <h2>Click A Task To Add To Volunteers List</h2>
       {allTasks.map( task => {
         return (
           <div onClick={ () => {
+            console.log("taskId:", task.taskId, "volunteerId:", volunteerId)
             axiosWithAuth()
-            .post(`api/volunteers/add-task-pair`, {taskId: task.taskId, studentId: studentId} )
+            .post(`api/volunteers/add-task-pair`, {taskId: task.taskId, volunteerId: volunteerId} )
             .then( res => {
-              history.push(`/admin/${volunteerId}/students`);
+              history.push(`/admin`);
             })
             .catch( err => { 
               console.log("Admin set task pair:", err.errMessage, err.message); 
