@@ -28,12 +28,30 @@ function App() {
           <Register />
         </Route>
 
-        <PrivateRoute exact path='/admin/:volunteerId/students' component={AdminStudents} />
-        <PrivateRoute exact path='/admin/add-task/:studentId/:volunteerId' component={TaskPage} />
-        <PrivateRoute exact path='/admin' component={AdminDashboard} />
-        <PrivateRoute exact path='/volunteer/:volunteerId' component={VolunteerDashboard} />
-        <PrivateRoute exact path='/student/update-volunteer/:studentId' component={Volunteers} />
-        <PrivateRoute exact path='/student/:studentId' component={StudentDashboard} />
+        <PrivateRoute 
+          exact path='/admin/:volunteerId/students' 
+          component={AdminStudents} 
+        />
+        <PrivateRoute 
+          exact path='/admin/add-task/:volunteerId' 
+          component={TaskPage} 
+        />
+        <PrivateRoute 
+          exact path='/admin' 
+          component={AdminDashboard} 
+        />
+        <PrivateRoute 
+          exact path='/volunteer/:volunteerId' 
+          component={VolunteerDashboard} 
+        />
+        <PrivateRoute 
+          exact path='/student/update-volunteer/:studentId' 
+          component={Volunteers} 
+        />
+        <PrivateRoute 
+          exact path='/student/:studentId' 
+          component={StudentDashboard} 
+        />
 
         <Route exact path='/'>
           <Home />
