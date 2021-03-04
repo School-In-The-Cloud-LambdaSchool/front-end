@@ -25,7 +25,8 @@ const VolunteerCard = ({user, setVolunteers}) => {
       <div>
         <div onClick={handleStudentGet} >
           <h3>{user.firstName} {user.lastName}</h3>
-          <p>Volunteer Id #{user.volunteerId}</p>          
+          <p>Volunteer Id #{user.volunteerId}</p>      
+          <button>Select Volunteer</button>    
         </div>
       </div>
     );
