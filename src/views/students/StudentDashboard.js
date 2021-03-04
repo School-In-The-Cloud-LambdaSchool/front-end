@@ -8,12 +8,13 @@ import axiosWithAuth from '../../utils/axiosWithAuth';
 const StudentDashboard = () => {
 	const {studentId} = useParams();
 	const [student, setStudent] = useState({});
-	const [volunteer, setVolunteer] = useState([]);
+	const [volunteer, setVolunteer] = useState({});
 	const [tasks, setTasks] = useState([]);
 	const {push} = useHistory();
 
 	useEffect(() => {
 		handleTaskGet(studentId);
+		handleStudentGet(studentId);
 	},[])
 
 	const handleTaskGet = (studentId) => {
@@ -27,10 +28,29 @@ const StudentDashboard = () => {
 		})
 	}
 
+	const handleStudentGet = (studentId) => {
+		axiosWithAuth()
+		.get(`api/students/${studentId}`)
+		.then(student => {
+			setStudent(student.data.data);
+			axiosWithAuth()
+				.get(`api/students/volunteers/${student.data.data.volunteerId}`)
+				.then(volunteer => {
+					setVolunteer(volunteer.data.data)
+				})
+				.catch(err => {
+					console.log("Get Student's Volunteer: ", err.errMessage, err.message);
+				})
+		})
+		.catch(err => {
+			console.log('Get Student: ', err.errMessage, err.message);
+		})
+	}
+
 	return (
 		<div className="container">
 			<h2>Welcome, {student.firstName}</h2>
-			<h3>Current Volunteer: {}</h3>
+			<h3>Current Volunteer: {volunteer.firstName} {volunteer.lastName}</h3>
 			<button onClick={(event)=>{
 				event.preventDefault();
 				push(`/student/update-volunteer/${studentId}`)
