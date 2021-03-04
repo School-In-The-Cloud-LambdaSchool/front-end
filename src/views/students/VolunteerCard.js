@@ -1,32 +1,29 @@
 import React from 'react';
-import { useHistory } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
 import axiosWithAuth from '../../utils/axiosWithAuth';
 
-const VolunteerCard = ({user, setVolunteers}) => {
-    const history = useHistory();
-
-    const handleStudentGet = (evt) => {
-      evt.preventDefault()
-      fetchUsers();
-      history.push(`/admin/${user.volunteerId}/students`);
-    }
-  
-    const fetchUsers = () => {
-      axiosWithAuth()
-      .get(`api/students/volunteers`)
-      .then( res => {
-        // console.log(res.data.data)
-        setVolunteers(res.data.data);
-      })
-      .catch( err => { console.log("Admin get volunteers:", err.errMessage, err.message); })
-  }
+const VolunteerCard = ({user}) => {
+    const {studentId} = useParams();
+    const {push} = useHistory();
   
     return(
       <div>
-        <div onClick={handleStudentGet} >
+        <div>
           <h3>{user.firstName} {user.lastName}</h3>
           <p>Volunteer Id #{user.volunteerId}</p>      
-          <button>Select Volunteer</button>    
+          <button onClick={(evt) => {
+            evt.preventDefault();
+            axiosWithAuth()
+              .put(`api/students/${studentId}`, {needMeeting: false, volunteerId: user.volunteerId})
+              .then(res => {
+                console.log(res)
+                // push(`/student/update-volunteer/${studentId}`)
+                push(`/student/${studentId}`);
+              })
+              .catch(err  => {
+                console.log("Student change Volunteer: ", err.errMessage, err.message); 
+              })
+          }}>Select Volunteer</button>    
         </div>
       </div>
     );

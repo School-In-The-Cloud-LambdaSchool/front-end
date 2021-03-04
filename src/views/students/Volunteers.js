@@ -1,9 +1,14 @@
-import React, {useEffect} from 'react';
+import React, {useState, useEffect} from 'react';
+import { useHistory, useParams } from 'react-router-dom';
 import axiosWithAuth from '../../utils/axiosWithAuth';
 import VolunteerCard from './VolunteerCard';
 
 
-const Volunteers = ({volunteers, setVolunteers}) => {
+const Volunteers = () => {
+    const [volunteers, setVolunteers] = useState([]);
+    const {push} = useHistory();
+    const {studentId} = useParams();
+
     useEffect( () => {
         fetchUsers();
     },[]);
@@ -23,12 +28,16 @@ const Volunteers = ({volunteers, setVolunteers}) => {
              <h3>Select your Volunteer</h3>
              {volunteers ?
              volunteers.map(user => {
-                 return <VolunteerCard user={user} setVolunteers={setVolunteers}/>
+                 return <VolunteerCard key={user.volunteerId} user={user} setVolunteers={setVolunteers}/>
              })
             :   <div>
                     <h3>Loading volunteers...</h3>
                 </div>
             }
+            <button onClick={(event)=> {
+                event.preventDefault()
+                push(`/student/${studentId}`)}}
+            >Cancel</button>
          </div>
      )
  }

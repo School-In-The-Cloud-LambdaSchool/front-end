@@ -9,23 +9,32 @@ const VolunteerDashboard = () => {
   const {volunteerId} = useParams();
   const [students, setStudents] = useState([]);
   const [ tasks, setTasks ]  = useState([]);
-  // const {push} = useHistory();
+
+  const {studentId} = useParams();
 
   useEffect(() => {
     axiosWithAuth()
-    .get(`api/volunteers/find-students/${volunteerId}`)
-    .then(res => {
-      setStudents(res.data.data);
-    })
-    .catch(err => {
-      console.log("Volunteer gets Students: ", err.errMessage, err.message);
-    })
+      .get(`api/volunteers/find-students/${volunteerId}`)
+      .then(res => {
+        setStudents(res.data.data);
+      })
+      .catch(err => {
+        console.log("Volunteer gets Students: ", err.errMessage, err.message);
+      });
+    axiosWithAuth()
+      .get(`api/students/${studentId}/tasks`)
+      .then(res=> {
+        setTasks(res.data.data)
+      })
+      .catch(err => {
+        console.log('Student gets Tasks: ', err.errMessage, err.message);
+      })
   }, [])
 
   return (
     <div>
       <h2>Volunteer Id #{volunteerId}'s Students</h2>
-      {students.map(student => {
+      { students.length > 0 ? students.map(student => {
         return(
           <div>
             <h3>{student.firstName} {student.lastName}</h3>
@@ -40,7 +49,9 @@ const VolunteerDashboard = () => {
             </div>
           </div>
         )
-      })}
+      })
+      : <h3>No students currently enrolled :'(</h3>
+      }
     </div>
   )
 }
