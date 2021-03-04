@@ -21,7 +21,7 @@ const VolunteerCard = ({user}) => {
                 push(`/student/${studentId}`);
               })
               .catch(err  => {
-                console.log("Student change Volunteer: ", err.errMessage, err.message); 
+                console.log("Student change Volunteer: ", err.errMessage, err.message, err.received); 
               })
           }}>Select Volunteer</button>    
         </div>
