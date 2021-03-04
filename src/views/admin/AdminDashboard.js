@@ -19,7 +19,7 @@ const AdminDashboard = () => {
     }
 
     return (
-        <div>
+        <div className="container">
             <h2>Volunteers</h2>
             <h3>Click on a volunteer to see their students</h3>
             { volunteers ? 

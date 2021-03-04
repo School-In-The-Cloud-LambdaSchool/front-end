@@ -28,7 +28,7 @@ const StudentDashboard = () => {
 	}
 
 	return (
-		<div>
+		<div className="container">
 			<h2>Welcome, {student.firstName}</h2>
 			<h3>Current Volunteer: {}</h3>
 			<button onClick={(event)=>{

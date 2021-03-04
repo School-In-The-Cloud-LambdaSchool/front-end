@@ -44,14 +44,14 @@ export default function VolunteerCard({user, setVolunteers, volunteers}) {
 
   return(
     <div>
-      <div>
+      <div className="container">
         <h3>{user.firstName} {user.lastName}</h3>
         <p>Volunteer Id #{user.volunteerId}</p>
         <div>
           <h4>Tasks:</h4>
           { tasks.length > 0 ? tasks.map( task => {
             return (
-              <div> 
+              <div className="container task"> 
                 <p>{task.task}</p>
                 <button onClick={ (evt) => {
                   evt.preventDefault()

@@ -8,7 +8,7 @@ const VolunteerCard = ({user}) => {
   
     return(
       <div>
-        <div>
+        <div className="container">
           <h3>{user.firstName} {user.lastName}</h3>
           <p>Volunteer Id #{user.volunteerId}</p>      
           <button onClick={(evt) => {
