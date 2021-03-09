@@ -7,6 +7,7 @@ import image2 from './images/pic02.jpg'
 import image3 from './images/pic03.jpg'
 import image4 from './images/pic04.jpg'
 import image5 from './images/pic05.jpg'
+import banner from './images/banner.jpg'
 
 const Home = () => {
     return (
@@ -29,6 +30,7 @@ const Home = () => {
         //     </footer>
         // </div>
         <div id="page-wrapper">
+          
         {/* <!-- Header --> */}
         <header id="header" className="alt">
           <h1><a href="index.html">School In The Cloud</a></h1>
@@ -41,8 +43,8 @@ const Home = () => {
                     <li><a href="index.html">Home</a></li>
                     <li><a href="generic.html">About Us</a></li>
                     <li><a href="elements.html">Meet The Team</a></li>
-                    <li><a href="#">Sign Up</a></li>
-                    <li><a href="#">Log In</a></li>
+                    <li><a href="/#">Sign Up</a></li>
+                    <li><a href="/#">Log In</a></li>
                   </ul>
                 </div>
               </li>
@@ -51,14 +53,15 @@ const Home = () => {
         </header>
   
         {/* <!-- Banner --> */}
-        <section id="banner">
+        <section id="banner" >
           <div className="inner">
+          {/* <img src={banner} style={{width:"100vw"}}/> */}
             <h2>School In The Cloud</h2>
             <p>
               School in the Cloud is a platform that trains senior volunteers to teach students in a group or individual setting.
             </p>
             <ul className="actions special">
-              <li><a href="#" className="button primary">Explore</a></li>
+              <li><a href="/#" className="button primary">Explore</a></li>
             </ul>
           </div>
           <a href="#one" className="more scrolly">Learn More</a>
@@ -212,8 +215,8 @@ const Home = () => {
               </p>
             </header>
             <ul className="actions stacked">
-              <li><a href="#" className="button fit primary">Explore</a></li>
-              <li><a href="#" className="button fit">Learn More</a></li>
+              <li><a href="/#" className="button fit primary">Explore</a></li>
+              <li><a href="/#" className="button fit">Learn More</a></li>
             </ul>
           </div>
         </section>
@@ -222,27 +225,27 @@ const Home = () => {
         <footer id="footer">
           <ul className="icons">
             <li>
-              <a href="#" className="icon brands fa-twitter"
+              <a href="/#" className="icon brands fa-twitter"
                 ><span className="label">Twitter</span></a
               >
             </li>
             <li>
-              <a href="#" className="icon brands fa-facebook-f"
+              <a href="/#" className="icon brands fa-facebook-f"
                 ><span className="label">Facebook</span></a
               >
             </li>
             <li>
-              <a href="#" className="icon brands fa-instagram"
+              <a href="/#" className="icon brands fa-instagram"
                 ><span className="label">Instagram</span></a
               >
             </li>
             <li>
-              <a href="#" className="icon brands fa-dribbble"
+              <a href="/#" className="icon brands fa-dribbble"
                 ><span className="label">Dribbble</span></a
               >
             </li>
             <li>
-              <a href="#" className="icon solid fa-envelope"
+              <a href="/#" className="icon solid fa-envelope"
                 ><span className="label">Email</span></a
               >
             </li>
