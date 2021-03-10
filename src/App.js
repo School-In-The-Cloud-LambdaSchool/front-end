@@ -17,7 +17,7 @@ import Volunteers from './views/students/Volunteers';
 function App() {
   return (
     <div className="App">
-      {/* <Navbar /> */}
+      <Navbar />
       <Switch>
 
         <Route exact path='/login'>

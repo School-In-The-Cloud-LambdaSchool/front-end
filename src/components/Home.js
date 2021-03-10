@@ -32,7 +32,7 @@ const Home = () => {
         <div id="page-wrapper">
           
         {/* <!-- Header --> */}
-        <header id="header" className="alt">
+        {/* <header id="header" className="alt">
           <h1><a href="index.html">School In The Cloud</a></h1>
           <nav id="nav">
             <ul>
@@ -50,7 +50,7 @@ const Home = () => {
               </li>
             </ul>
           </nav>
-        </header>
+        </header> */}
   
         {/* <!-- Banner --> */}
         <section id="banner" >
